@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+FLASH| Lajmet E Mia
+{% endblock  %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Lajmet E Mia</h1>
+      <p class="lead">Ne kete faqe do te gjeni te gjithe lajmet e shkruara nga ju.</p>
+    </div>
+  </div>
+
+ 
+  <div class="row">
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+    <div class="col-sm">
+        {% include 'user/includes/card_lajme.html' %}
+    </div>
+    <br/>
+  </div>
+
+{% endblock  %}

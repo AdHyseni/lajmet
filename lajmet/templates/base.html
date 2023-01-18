@@ -1,0 +1,116 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="project">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="author" content="vinayak sharma">
+
+  <title>
+    {% block title %}
+    {{title}}
+    {% endblock  %}
+  </title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  <title>Bootstrap Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- main css -->
+  <link rel="stylesheet" type="text/css" href="{% static "index.css" %}" />
+
+
+  <!-- message here -->
+
+  {% if messages %}
+  {% for message in messages %}
+
+  <script>
+    alert("{{ message }}");
+  </script>
+
+  {% endfor %}
+  {% endif %}
+
+</head>
+
+<body class="container-fluid d-flex flex-column min-vh-100">
+
+  <header class="row">
+    <!-- navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">FLASH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'faqa-pare' %}">Faqa Kryesore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'lajmet' %}">Lajmet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'ne' %}">Ne</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'kontaktet' %}">Kontakto</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">REDAKSIA</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'index' %}">Profili</a></li>
+            <li><a class="dropdown-item" href="{% url 'lajmet-e-mia' %}">Lajmet</a></li>
+            <li><a class="dropdown-item" href="{% url 'redakto' %}">Krijo</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Dil</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link " href="{%url 'login'%}">Hyr</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{%url 'register'%}">Regjistrohu</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  </header>
+  <br/>
+  <br>
+  <br>
+  {% block content %}
+
+    {% endblock  %}
+    <br/>
+    <br/>
+    <br/>
+    <footer class="mt-auto">
+        <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-dark" href="">ALearn</a>
+  </div>
+    </footer>
+
+</body>
+
+</html>

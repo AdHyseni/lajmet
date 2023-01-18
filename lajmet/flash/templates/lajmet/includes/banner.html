@@ -1,0 +1,8 @@
+{% load static %}
+<div class="card text-bg-dark">
+    <img style="height:450px" src="{% block baner_img %}{% static 'images/banner.png' %}{% endblock  %}" class="img-fluid rounded-start" alt="...">
+    <div class="card-img-overlay">
+      <h5 class="card-title">{% block baner_title %}{% endblock  %}</h5>
+      <p class="card-text">{% block baner_desc %}{% endblock  %}</p>
+    </div>
+  </div>

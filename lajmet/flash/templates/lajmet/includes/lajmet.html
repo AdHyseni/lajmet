@@ -1,0 +1,9 @@
+{%load static%}
+  <div class="card" style="width: 18rem;">
+    <img src="{{lajmi.foto.url}}" alt="" class="card-img-top img-thumbnail" alt="{{lajmi.titulli}}">
+      <div class="card-body">
+        <h5 class="card-title">{{lajmi.titulli}}</h5>
+        <p class="card-text">{{lajmi.pershkrimi}}</p>
+        <a href="{% url 'lajmi' lajmi.slug %}" class="btn btn-primary">Lexo Lajmin</a>
+      </div>
+    </div>

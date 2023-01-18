@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}FLASH | REDAKSIA{% endblock  %}
+
+{% block content %}
+
+{% block start %}
+    {% if user.is_authenticated %}
+    <div class='container'>
+      <div class="card bg-dark text-dark">
+        <img class="card-img img-fluid" src="{%static 'images/backoffice.jpg'%}" alt="Card image">
+      </div>
+      <div class="jumbotron">
+        <h1 class="display-4">Pershendetje, {{user}}</h1>
+        <p class="lead">Kjo eshte faqa kryesore per te redakuar nje lajm.</p>
+        <hr class="my-4">
+        <p>Ne kete faqe mund te krijojm, fshijm ose modifikojm nje lajm</p>
+      </div>
+      <center><h3>Lajmi i fundit</h3></center>
+      <div class="card text-center">
+        <div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>
+      </div>
+      <center><h3>Lajmet e Mia</h3></center>
+      {% include "user/includes/card_lajme.html" %}
+      <br/>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Lajmet e Mia</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">Krijo Lajm te Ri</button>
+      <br/>
+      <footer class="mt-auto">FLASH | REDAKSIA</footer>
+    </div>
+    {% else %}
+    <center><h1>Ju duhet te logoheni ne menyre qe te hyni ne faqen e redaksise</h1></center>
+    {% endif %}
+    {% endblock %}
+
+{% endblock  %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Flash|Faqa e pare
+{% endblock  %}
+{% block css_file %}
+{% endblock  %}
+{% block content %}
+{% include 'lajmet/includes/banner.html' %}
+<div class="container text-center">
+    <h2>Lajmet Flash</h2>
+    <div class="row">
+      {% for lajmi in lajmet  %}
+      <div class="col">
+        {% include 'lajmet/includes/lajmet.html' %}
+      </div>
+      {% endfor %}
+    </div>
+</div>
+<br/>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+          Lajmi fundit
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{recent.titulli}}</h5>
+          <p class="card-text">{{recent.pershkrimi}}</p>
+          <a href="{% url 'lajmi' recent.slug %}" class="btn btn-primary">Lexo Lajmin</a>
+        </div>
+      </div>
+</div>
+<br/>
+<br/>
+<div class="card text-center">
+    <div class="card-header">
+      Mbi Ne
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">FLASH</h5>
+      <p class="card-text">Media e me e shpejt ne vend per lajmet nga vendi dhe jashte.</p>
+      <a href="#" class="btn btn-primary">Lexo me shume</a>
+    </div>
+  </div>
+
+{% endblock  %}

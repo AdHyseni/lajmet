@@ -1,0 +1,51 @@
+/* html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+} */
+
+* {
+    background-color: cyan;
+}
+
+/*
+. -> Therret klasen e nje tag-u
+# -> Therret id e nje tag-u
+emri i tag(html, h1 , h2 div...) i referohet cdo tag-u ne html
+#### h1 { font-size: 22} per cdo tag h1 ne html size per font do te jete 22px
+*/
+.navigation {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    align-items: center;
+}
+
+.navigation a img {
+    width: 250px;
+    height: 5rem;
+}
+
+.lista {
+    list-style: none;
+}
+
+.lista li {
+    display: inline;
+}
+
+.lista li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: brown;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.lista li a:hover {
+    color:chocolate;
+    font-size: 44px;
+}
+.lista li a:hover {
+    color:chocolate;
+    font-size: 44px;
+}

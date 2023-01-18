@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+FLASH| Lajmet E Mia
+{% endblock  %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Krijo Lajmin</h1>
+      <p class="lead">Ne kete faqe do te keni mundesine per te krijuar nje lajm te ri.</p>
+    </div>
+  </div>
+
+  <center>
+    <form action={% url 'index' %} method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ form|crispy}}
+      </fieldset>
+     <center>
+      <br/>
+      <button style="background: black; font-size: 2rem; padding:1%;" class="btn btn-outline-info" type="submit">Krijo</button>
+    </center>
+    <br/>
+    </form>
+  </center>
+
+  
+
+
+
+{% endblock  %}

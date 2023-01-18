@@ -1,0 +1,22 @@
+{% extends 'test.html' %}
+{% load static %}
+{% block title %}
+FLASH|Faqa Pare
+{% endblock  %}
+
+{% block content %}
+
+<h1> Faq e pare </h1>
+
+<div class="lajmet">
+    {% for lajm in lajmet %}
+    <h3>Titulli:{{lajm.titulli}} </h3>
+    <a href="{% url 'lajmi' lajm.slug %}">
+    <img src="{{lajm.foto.url}}" alt="">
+    </a>
+    <p>Pershkrimi: <br> {{lajm.pershkrimi}}<p>
+    {% endfor %}
+   <br>
+</div>
+
+{% endblock  %}

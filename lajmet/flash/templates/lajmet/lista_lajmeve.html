@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%load static%}
+{%block title%} Flash|Te gjith lajmet {%endblock%}
+{%block content%}
+<br/>
+<div class="container text-center">
+    <h2>FLASH</h2>
+    <div class="row">
+      {% for lajmi in lajmet  %}
+      <div class="col">
+        {% include 'lajmet/includes/lajmet.html' %}
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{%endblock%}

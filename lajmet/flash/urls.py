@@ -6,4 +6,6 @@ urlpatterns = [
    path('ne/',views.mbi_ne,name='ne'),
    path('lajmet/',views.lajmet, name='lajmet'),
    path('lajmi/<slug:slug>',views.lajmi,name='lajmi'),  
+
+
 ]

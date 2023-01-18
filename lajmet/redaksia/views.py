@@ -1,18 +1,33 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserRegisterForm,LajmiForm
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
-from django.template import Context
+from flash.models import Lajmi
+from django.views.generic import ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
   
-  
-#################### index#######################################
-def index(request):
-    return render(request, 'user/index.html', {'title':'index'})
+
+class StartingPage(LoginRequiredMixin,ListView):
+    login_url = 'login/'
+    redirect_field_name = 'redaksia/login/'
+    template_name = 'user/index.html'
+    model = Lajmi
+    context_object_name = 'lajmet'
+    ordering = ['-data']
+
+    def get_queryset(self):
+        query_set= super().get_queryset()
+        data = query_set[:1]
+        return data
+    
+
   
 ########### register here #####################################
 def register(request):
@@ -55,9 +70,15 @@ def Login(request):
     form = AuthenticationForm()
     return render(request, 'user/login.html', {'form':form, 'title':'log in'})
 
-
+@login_required(login_url='/redaksia/login/')
 def lajmet_e_mia(request):
-    return render(request, 'user/lajmet_e_mia.html')
+    username = None
+    if request.user.is_authenticated():
+        username = request.user.username
+        lajmet = get_object_or_404(Lajmi, autori=username)
+    return render(request, 'user/lajmet_e_mia.html',{'lajmet':lajmet})
+
+@login_required(login_url='/redaksia/login/')
 def redakto(request):
     if request.method == 'POST':
         form = LajmiForm(request.POST)
@@ -67,3 +88,24 @@ def redakto(request):
             lajmi.save()
     else:
         return render(request, 'user/redakto.html', {'form': LajmiForm()})
+
+@login_required(login_url='/redaksia/login/')
+def lajmi(request, id):
+    lajmi = get_object_or_404(Lajmi,id=id)
+    form = LajmiForm(instance=lajmi)
+    return render(request, 'user/lajmi.html', {'lajmi':lajmi,'form':form})
+    
+
+def update(request, id):
+    lajmi = Lajmi.objects.get(id=id)
+    form = LajmiForm(instance=lajmi)
+    return redirect(request,'lajmi-redaksia',id=lajmi.id)
+
+def delete(request, id):
+    context ={}
+    obj = get_object_or_404(Lajmi, id = id)
+    if request.method =="POST":
+        obj.delete()
+        return redirect("redaksia/")
+ 
+    return render(request, "delete_view.html", context)

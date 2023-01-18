@@ -18,30 +18,27 @@
         <p>Ne kete faqe mund te krijojm, fshijm ose modifikojm nje lajm</p>
       </div>
       <center><h3>Lajmi i fundit</h3></center>
-      <div class="card text-center">
-        <div class="card-header">
-          Featured
+        {% for lajmi in lajmet  %}
+        <div class="card text-center">
+          <div class="card-header">
+            FLASH | NEWS
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{lajmi.titulli}}</h5>
+            <p class="card-text">{{lajmi.pershkrimi}}</p>
+            <a href="{% url 'lajmi' lajmi.slug %}" class="btn btn-primary">Lexo Lajmin</a>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-muted">
-          2 days ago
-        </div>
-      </div>
-      <center><h3>Lajmet e Mia</h3></center>
-      {% include "user/includes/card_lajme.html" %}
-      <br/>
-      <button type="button" class="btn btn-primary btn-lg btn-block">Lajmet e Mia</button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">Krijo Lajm te Ri</button>
-      <br/>
-      <footer class="mt-auto">FLASH | REDAKSIA</footer>
-    </div>
+        {% endfor %}
+      </br>
+      </br>
+      </br>
     {% else %}
     <center><h1>Ju duhet te logoheni ne menyre qe te hyni ne faqen e redaksise</h1></center>
     {% endif %}
     {% endblock %}
-
+      
 {% endblock  %}

@@ -17,6 +17,7 @@
     {% endblock  %}
   </title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
@@ -52,27 +53,27 @@
   <header class="row">
     <!-- navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">FLASH</a>
+    <a class="navbar-brand" href="{% url 'faqa-pare' %}"> <i class="fa-solid fa-tv"></i> FLASH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'faqa-pare' %}">Faqa Kryesore</a>
+          <a class="nav-link" aria-current="page" href="{% url 'faqa-pare' %}"><i class="fa-solid fa-house"></i> Faqa Kryesore</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'lajmet' %}">Lajmet</a>
+          <a class="nav-link" aria-current="page" href="{% url 'lajmet' %}"><i class="fa-brands fa-hacker-news"></i> Lajmet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'ne' %}">Ne</a>
+          <a class="nav-link" aria-current="page" href="{% url 'ne' %}"> <i class="fa-solid fa-users-viewfinder"></i> Ne</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'kontaktet' %}">Kontakto</a>
+          <a class="nav-link" aria-current="page" href="{% url 'kontaktet' %}"> <i class="fa-sharp fa-solid fa-address-card"></i> Kontakto</a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">REDAKSIA</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-newspaper"></i> REDAKSIA</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'index' %}">Profili</a></li>
             <li><a class="dropdown-item" href="{% url 'lajmet-e-mia' %}">Lajmet</a></li>
@@ -80,14 +81,14 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Dil</a>
+          <a class="nav-link" aria-current="page" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> Dil</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link " href="{%url 'login'%}">Hyr</a>
+          <a class="nav-link " href="{%url 'login'%}"><i class="fa-solid fa-right-to-bracket"></i> Hyr</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{%url 'register'%}">Regjistrohu</a>
+          <a class="nav-link " href="{%url 'register'%}"><i class="fa-solid fa-registered"></i> Regjistrohu</a>
         </li>
         {% endif %}
       </ul>

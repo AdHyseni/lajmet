@@ -16,33 +16,12 @@ FLASH| Lajmet E Mia
 
  
   <div class="row">
+    {% for lajmi in lajmet %}
     <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
-    <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
-    <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
+      {% include 'user/includes/card_lajme.html' %}
   </div>
   <br/>
-  <div class="row">
-    <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
-    <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
-    <div class="col-sm">
-        {% include 'user/includes/card_lajme.html' %}
-    </div>
-    <br/>
+    {% endfor %}
   </div>
 
 {% endblock  %}

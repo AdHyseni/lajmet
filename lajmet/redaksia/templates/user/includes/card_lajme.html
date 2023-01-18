@@ -1,8 +1,9 @@
+{% load static %}
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+  <img src="{{lajmi.foto.url}}" alt="" class="card-img-top img-thumbnail" alt="{{lajmi.titulli}}">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">{{lajmi.titulli}}</h5>
+      <p class="card-text">{{lajmi.pershkrimi}}</p>
+      <a href="{% url 'lajmi-redaksia' lajmi.slug %}" class="btn btn-primary">Lexo Lajmin</a>
     </div>
   </div>

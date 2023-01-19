@@ -19,12 +19,11 @@ class UserRegisterForm(UserCreationForm):
 
 
 class LajmiForm(forms.ModelForm):
+    foto = forms.ImageField(required=False)
+    
     class Meta:
-        model = Lajmi
- 
-        # specify fields to be used
+        model =Lajmi
         fields = '__all__'
-        exclude = ('autori','slug')
-        widgets = {
-            'autori': TextInput(attrs={'readonly': 'readonly'})
-        }
+        exclude = ['slug','autori']
+      
+

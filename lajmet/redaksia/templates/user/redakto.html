@@ -15,7 +15,7 @@ FLASH| Lajmet E Mia
   </div>
 
   <center>
-    <form action={% url 'index' %} method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;">
+    <form  method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;" enctype='multipart/form-data'>
       {% csrf_token %}
       <fieldset class="form-group">
         {{ form|crispy}}

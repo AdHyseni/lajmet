@@ -8,9 +8,9 @@ urlpatterns = [
         path('login/', views.Login, name ='login'),
         path('register/', views.register, name ='register'),
         path('lajmet/', views.lajmet_e_mia, name ='lajmet-e-mia'),
-        path('redakto/', views.redakto, name ='redakto'),
-        #path('lajmi/<int:id>', views.redakto, name ='lajmi-redaksia'),
-        # path('update/<int:id>',views.update,name='update'),
-        # path('delete/<int:id>',views.delete,name='delete'),
+        path('krijo/', views.krijo, name ='krijo'),
+        path('lajmi/<slug:slug>', views.lajmi, name ='lajmi-redaksia'),
+        path('update/<slug>',views.perditeso,name='update'),
+        path('delete/<slug:slug>',views.fshij,name='fshij'),
 
     ]

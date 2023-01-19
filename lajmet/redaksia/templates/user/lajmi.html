@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
 {% load static %}
 {% block title %}
 FLASH| {{lajmi.titulli}}
 {% endblock  %}
 {% block content %}
-<div class='fluid-container'>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">{{lajmi.titulli}}</h1>
       <p class="lead">{{lajmi.pershkrimi}}</p>
-      <span class="badge badge-danger"><a>Danger</a></span>
       <figure class="figure">
         <img src="{{lajmi.foto.url}}" class="figure-img img-fluid rounded" alt="{{lajmi.title}}">
       </figure>
@@ -24,6 +24,23 @@ FLASH| {{lajmi.titulli}}
           <p>{{lajmi.permbajtja | linebreaks}}</p>
         </div>
       </div>
+      <form  method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{ form|crispy}}
+        </fieldset>
+       <center>
+        <br/>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <a href='{% url 'fshij' lajmi.slug %}'class="btn btn-outline-danger" type="button">Fshij</a>
+            <a href='{% url 'update' lajmi.slug %}' class="btn btn-outline-primary" type="button">Perditeso</a>
+          </div>
+      </center>
+      <br/>
+      </form>
+    </br>
+    <a class='btn btn-danger' href='{% url 'fshij' lajmi.slug %}'>Fshij</a>
     </div>
 </div>
 </div>

@@ -28,9 +28,9 @@ class Lajmi(models.Model):
     autori = models.ForeignKey(Autori, on_delete=models.DO_NOTHING)
     kategoria = models.ManyToManyField(Kategoria)
     permbajtja = models.TextField(max_length=500)
-    foto = models.ImageField(upload_to="flash")
+    foto = models.ImageField(upload_to="flash",null=True)
     data = models.DateField(auto_now=True)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
         int = random.randint(0, 100)

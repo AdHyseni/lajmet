@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block title %}
+FLASH| {{lajmi.titulli}}
+{% endblock  %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{lajmi.titulli}}</h1>
+      <p class="lead">{{lajmi.pershkrimi}}</p>
+      <figure class="figure">
+        <img src="{{lajmi.foto.url}}" class="figure-img img-fluid rounded" alt="{{lajmi.title}}">
+      </figure>
+      <div class="card">
+        <div class="card-body">
+          <p>Autori | {{lajmi.autori}}</p>
+          <p>Data publikimit | {{lajmi.data}}</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <p>{{lajmi.permbajtja | linebreaks}}</p>
+        </div>
+      </div>
+      <center>
+      <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{ form|crispy}}
+        </fieldset>
+       <center>
+        <br/>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <a href='{% url 'fshij' lajmi.slug %}'class="btn btn-outline-danger" type="button">Fshij</a>
+            <button class="btn btn-outline-primary"  type='submit'>Perditeso</button>
+          </div>
+      </form>
+      </center>
+      <br/>
+    </br>
+    </div>
+</div>
+</div>
+
+
+{% endblock  %}
+
+

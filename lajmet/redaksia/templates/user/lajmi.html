@@ -6,43 +6,19 @@
 FLASH| {{lajmi.titulli}}
 {% endblock  %}
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">{{lajmi.titulli}}</h1>
-      <p class="lead">{{lajmi.pershkrimi}}</p>
-      <figure class="figure">
-        <img src="{{lajmi.foto.url}}" class="figure-img img-fluid rounded" alt="{{lajmi.title}}">
-      </figure>
-      <div class="card">
-        <div class="card-body">
-          <p>Autori | {{lajmi.autori}}</p>
-          <p>Data publikimit | {{lajmi.data}}</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <p>{{lajmi.permbajtja | linebreaks}}</p>
-        </div>
-      </div>
-      <form  method="POST" style="border: 1px solid black; margin: 4%; padding:10%; border-radius:1%;" enctype='multipart/form-data'>
-        {% csrf_token %}
-        <fieldset class="form-group">
-          {{ form|crispy}}
-        </fieldset>
-       <center>
-        <br/>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <a href='{% url 'fshij' lajmi.slug %}'class="btn btn-outline-danger" type="button">Fshij</a>
-            <a href='{% url 'update' lajmi.slug %}' class="btn btn-outline-primary" type="button">Perditeso</a>
-          </div>
-      </center>
-      <br/>
-      </form>
-    </br>
-    <a class='btn btn-danger' href='{% url 'fshij' lajmi.slug %}'>Fshij</a>
-    </div>
-</div>
+<div class="jumbotron">
+  <h1 class="display-4">{{lajmi.titulli}}</h1>
+  <p class="lead">{{lajmi.pershkrimi}}</p>
+  <hr class="my-4">
+  <p>{{lajmi.pershkrimi}}</p>
+  <figure class="figure">
+    <img src="{{lajmi.foto.url}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+    
+  </figure>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'update' lajmi.id %}" role="button">Perditeso</a>
+    <a class="btn btn-danger btn-lg" href="{% url 'fshij' lajmi.slug %}" role="button">Fshij</a>
+  </p>
 </div>
 
 

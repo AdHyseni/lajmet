@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect,get_object_or_404,get_list_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegisterForm,LajmiForm
+from .forms import UserRegisterForm,LajmiForm,LajmiUpdateForm
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
@@ -83,8 +83,8 @@ def lajmet_e_mia(request):
 
 def lajmi(request,slug):
     lajmi = get_object_or_404(Lajmi,slug=slug)
-    form = LajmiForm(instance=lajmi)
-    return render(request,'user/lajmi.html',{'lajmi':lajmi, 'form':form}) 
+    print(lajmi.id)
+    return render(request,'user/lajmi.html',{'lajmi':lajmi}) 
 
 
 def krijo(request):
@@ -109,18 +109,22 @@ def fshij(request,slug):
     data.delete()
     return redirect('index')
 
-def perditeso(request,slug):
-    record = get_object_or_404(Lajmi,slug=slug)
+def perditeso(request,id):
+    record = get_object_or_404(Lajmi,id=id)
     print(record)
-    form = LajmiForm(instance = record)
-    print(form.is_valid())
-    form = LajmiForm(request.POST, instance=record)
-    if form.is_valid():
-            print(form)
-            form.save()
-            return redirect('lajmi',slug=slug)
+    print(request.method)
+    form = LajmiUpdateForm(instance = record)
+    if request.method == "POST":
+        form = LajmiUpdateForm(request.POST, request.FILES, instance=record)
+        print(form)
+        if form.is_valid():
+           form.save()
+           return redirect('lajmi-redaksia',record.slug)
+        else:
+            print(form.errors.as_data())
+            print('error')
     
-    return redirect('index')
+    return render(request, 'user/perditso.html',{'form':form,'lajmi':record})
 
 
 

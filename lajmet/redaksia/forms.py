@@ -25,5 +25,13 @@ class LajmiForm(forms.ModelForm):
         model =Lajmi
         fields = '__all__'
         exclude = ['slug','autori']
+        
+class LajmiUpdateForm(forms.ModelForm):
+    foto = forms.ImageField(required=False)
+    
+    class Meta:
+        model =Lajmi
+        fields = '__all__'
+        exclude = ['slug','autori']
       
 

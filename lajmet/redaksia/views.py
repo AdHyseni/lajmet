@@ -73,20 +73,20 @@ def Login(request):
     form = AuthenticationForm()
     return render(request, 'user/login.html', {'form':form, 'title':'log in'})
 
-
+@login_required(login_url='login')
 def lajmet_e_mia(request):
     user = request.user
     id_autori = get_object_or_404(Autori,user_name=user)
     lajmet = get_list_or_404(Lajmi, autori=id_autori)
     return render(request, 'user/lajmet_e_mia.html',{'lajmet':lajmet})  
 
-
+@login_required(login_url='login')
 def lajmi(request,slug):
     lajmi = get_object_or_404(Lajmi,slug=slug)
     print(lajmi.id)
     return render(request,'user/lajmi.html',{'lajmi':lajmi}) 
 
-
+@login_required(login_url='login')
 def krijo(request):
     form = LajmiForm()
 
@@ -104,11 +104,13 @@ def krijo(request):
     context = {'form':form}
     return render(request, 'user/redakto.html',context)
 
+@login_required(login_url='login')
 def fshij(request,slug):
     data = get_object_or_404(Lajmi, slug=slug) 
     data.delete()
     return redirect('index')
 
+@login_required(login_url='login')
 def perditeso(request,id):
     record = get_object_or_404(Lajmi,id=id)
     print(record)

@@ -10,25 +10,31 @@ Flash|Faqa e pare
 <div class="container text-center">
     <h2>Lajmet Flash</h2>
     <div class="row">
+      {% if lajmet %}
       {% for lajmi in lajmet  %}
       <div class="col">
         {% include 'lajmet/includes/lajmet.html' %}
       </div>
       {% endfor %}
+
+      {% endif %}
     </div>
 </div>
 <br/>
 <div class="container-fluid">
-    <div class="card">
-        <div class="card-header">
-          Lajmi fundit
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{recent.titulli}}</h5>
-          <p class="card-text">{{recent.pershkrimi}}</p>
-          <a href="{% url 'lajmi' recent.slug %}" class="btn btn-primary">Lexo Lajmin</a>
-        </div>
-      </div>
+ {% if recent %}
+ <div class="card">
+  <div class="card-header">
+    Lajmi fundit
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{recent.titulli}}</h5>
+    <p class="card-text">{{recent.pershkrimi}}</p>
+    <a href="{% url 'lajmi' recent.slug %}" class="btn btn-primary">Lexo Lajmin</a>
+  </div>
+</div>
+
+ {% endif %}
 </div>
 <br/>
 <br/>

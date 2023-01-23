@@ -4,7 +4,10 @@ from .models import *
 # Create your views here.
 def faqa_pare(request):
     lajmet = Lajmi.objects.all()
-    recent = Lajmi.objects.all().order_by('-data')[0]
+    if not lajmet:
+        recent =[]
+    else:
+        recent = Lajmi.objects.all().order_by('-data')[0]
     context = {'lajmet':lajmet,'recent':recent}
     return render(request, 'lajmet/index.html',context)
 
